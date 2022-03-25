@@ -1,0 +1,56 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+<p class="h3">Add Contact</p>
+<p class="fst-italic">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem vitae culpa distinctio nostrum deserunt, numquam commodi sapiente molestiae qui sunt nulla ullam! Iste labore non nisi eligendi ipsa magnam aut!</p>
+    </div>
+  </div>
+</div>
+{{contact|json}}
+<!-- Contact Form-->
+<div class="container">
+<div class="row">
+
+  <div class="col-sm-4">
+    <form (submit)="createSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input required="true" [(ngModel)]="contact.name" type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo Url</label>
+        <input required="true" [(ngModel)]="contact.photo" type="text" name="photo" class="form-control" id="photo" placeholder="Photo Url">
+      </div>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input required="true" [(ngModel)]="contact.email" type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+      </div>
+      <div class="form-group">
+        <label for="name">Mobile</label>
+        <input required="true" type="number" [(ngModel)]="contact.mobile" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile">
+      </div>
+      <div class="form-group">
+        <label for="name">Company</label>
+        <input required="true" type="text" [(ngModel)]="contact.company" name="company" class="form-control" id="company" placeholder="Enter Company">
+      </div>
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input required="true" type="text" [(ngModel)]="contact.title" name="title" class="form-control" id="title" placeholder="Enter Title">
+      </div>
+
+      <div class="form-group mb-1">
+        <label for="name">Select a Group</label>
+        <select required="true" [(ngModel)]="contact.groupId" name="groupId" id="groupId" class="form-control" *ngIf="group.length>0">
+          <option [value]="grp.id" *ngFor="let grp of group">{{grp.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-danger" value="Create">Create</button>
+      <a routerLink="/" class="btn btn-dark ms-2">Close</a>
+    </form>
+  </div>
+  <div class="col-sm-4">
+    <img [src]="contact.photo" alt="">
+  </div>
+</div>
+
+</div>

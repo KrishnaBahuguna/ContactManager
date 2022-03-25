@@ -1,0 +1,71 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+
+      <p class="h4 text-danger fw-bold">Contacts
+      <a routerLink="/contacts/add" class="btn btn-danger btn-sm">
+        <i class="fa fa-plus circle"></i>
+        New</a>
+      </p>
+      <p class="fst-italic">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, facere quis ipsam in architecto voluptatum vitae eum cum dolor dolorum sint, maxime autem. Repudiandae ut suscipit eveniet alias magnam modi?
+      </p>
+
+      <form action="">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col">
+
+                <input type="text" placeholder="Search User" class="form-control">
+              </div>
+              <div class="col">
+                <input type="button" value="Search" class="btn btn-outline-dark">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Cards-->
+<div class="container mt-3" *ngIf="!loading && contacts.length>0">
+  <div class="row">
+    <div class="col-md-6 mb-3" *ngFor="let contact of contacts">
+
+      <div class="card list-group-item-danger shadow-lg">
+        <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-sm-4">
+                <img class="contact-img" [src]="contact.photo" alt="">
+              </div>
+              <div class="col-sm-7">
+                <ul class="list-group">
+                  <li class="list-group-item">Name: <span class="fw-bold">{{contact.name}}</span></li>
+                  <li class="list-group-item">Email: <span class="fw-bold">{{contact.email}}</span></li>
+                  <li class="list-group-item">Mobile: <span class="fw-bold">{{contact.mobile}}</span></li>
+                  <li class="list-group-item">Mobile: <span class="fw-bold">{{contact.title}}</span></li>
+                  <li class="list-group-item">Mobile: <span class="fw-bold">{{contact.company}}</span></li>
+
+                </ul>
+              </div>
+              <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
+                  <a routerLink="/contacts/view/{{contact.id}}" class="btn btn-warning my-1">
+
+                    <i class="fa fa-eye"></i>
+                  </a>
+                  <a routerLink="/contacts/edit/{{contact.id}}" class="btn btn-warning my-1">
+
+                    <i class="fa fa-pen"></i>
+                  </a>
+                 <button class="btn btn-danger my-1" (click)="DeleteContact(contact.id)">
+                   <i class="fa fa-trash"></i>
+                 </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
